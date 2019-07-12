@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #-----------------------------------------------------------------------------
-# qwiic_env_keypad_ex2.py
+# qwiic_env_joystick_ex2.py
 #
-# Simple Example for the Qwiic Keypad Device including Time
+# Simple Example for the Qwiic Joystick Device
 #------------------------------------------------------------------------
 #
 # Written by  SparkFun Electronics, May 2019
@@ -40,49 +40,50 @@
 #
 
 from __future__ import print_function
-import qwiic_keypad
+import qwiic_joystick
 import time
 import sys
 
 def runExample():
 
-	print("\nSparkFun qwiic Keypad   Example 2\n")
-	myKeypad = qwiic_keypad.QwiicKeypad()
+	print("\nSparkFun qwiic Joystick   Example 2\n")
+	myJoystick = qwiic_joystick.QwiicJoystick()
 
-	if myKeypad.isConnected() == False:
-		print("The Qwiic Keypad device isn't connected to the system. Please check your connection", \
+	if myJoystick.isConnected() == False:
+		print("The Qwiic Joystick device isn't connected to the system. Please check your connection", \
 			file=sys.stderr)
 		return
 
-	myKeypad.begin()
+	myJoystick.begin()
 
-	print("Initialized. Firmware Version: %s" % myKeypad.getVersion())
+	print("Initialized. Firmware Version: %s" % myJoystick.getVersion())
 
-
-	button = 0
 	while True:
 
-		# necessary for keypad to pull button from stack to readable register
-		myKeypad.updateFIFO()  
-		button = myKeypad.getButton()
-		deltaT = myKeypad.getTimeSincePressed()
+		x = myJoystick.getHorizontal()
+		y = myJoystick.getVertical()
+		b = myJoystick.getButton()
 
-		if button == -1:
-			print("No keypad detected")
-			time.sleep(1)
-			continue
+		if x > 575:
+			print("L")
+		elif x < 450:
+			print("R")
 
-		elif button != 0:
-			print("Button %s was pressed, %d milliseconds ago." % (chr(button), deltaT))
-		
-		time.sleep(.25)
-		
+		if y > 575:
+			print("U")
+		elif y < 450:
+			print("D")
+
+		if b == 0:
+			print("Button")
+			
+		time.sleep(.5)
 
 if __name__ == '__main__':
 	try:
 		runExample()
 	except (KeyboardInterrupt, SystemExit) as exErr:
-		print("\nEnding Example 2")
+		print("\nEnding Example 1")
 		sys.exit(0)
 
 
