@@ -66,7 +66,7 @@ _DEFAULT_NAME = "SparkFun Qwiic Joystick"
 # device.
 _AVAILABLE_I2C_ADDRESS = [0x20]
 
-# Register codes for the keypad
+# Register codes for the Joystick
 JOYSTICK_ID 		 	= 0x00
 JOYSTICK_VERSION1    	= 0x01
 JOYSTICK_VERSION2    	= 0x02
@@ -86,7 +86,7 @@ JOYSTICK_CHANGE_ADDREESS = 0x0A
 
 class QwiicJoystick(object):
 	"""
-	QwiicKeypad
+	QwiicJoystick
 
 		:param address: The I2C address to use for the device. 
 						If not provided, the default address is used.
