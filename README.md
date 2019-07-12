@@ -1,5 +1,5 @@
 Qwiic_Joystick_Py
-==============
+==================
 
 <p align="center">
    <img src="https://cdn.sparkfun.com/assets/custom_pages/2/7/2/qwiic-logo-registered.jpg"  width=200>  

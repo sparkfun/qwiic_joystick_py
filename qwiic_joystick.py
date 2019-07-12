@@ -39,7 +39,7 @@
 
 """
 qwiic_joystick
-============
+===============
 Python module for the[SparkFun Qwiic Joystick](https://www.sparkfun.com/products/15168)
 
 This python package is a port of the existing [SparkFun Qwiic Joystick Arduino Library](https://github.com/sparkfun/SparkFun_Qwiic_Joystick_Arduino_Library)

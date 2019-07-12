@@ -46,18 +46,18 @@ with io.open(path.join(here, "DESCRIPTION.rst"), encoding="utf-8") as f:
 
 setup(
 
-    name='sparkfun-qwiic-keypad',
+    name='sparkfun-qwiic-joystick',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # http://packaging.python.org/en/latest/tutorial.html#version
     version='0.5.0',
 
-    description='SparkFun Electronics qwiic Keypad',
+    description='SparkFun Electronics qwiic Joystick',
     long_description=long_description,
 
     # The project's main homepage.
-    url='https://www.sparkfun.com/products/15290',
+    url='https://www.sparkfun.com/products/15168',
 
     # Author details
     author='SparkFun Electronics',
@@ -96,6 +96,6 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    py_modules=["qwiic_keypad"],
+    py_modules=["qwiic_joystick"],
 
 )
