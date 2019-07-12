@@ -49,21 +49,21 @@ def runExample():
 	print("\nSparkFun qwiic Joystick   Example 1\n")
 	myJoystick = qwiic_joystick.QwiicJoystick()
 
-	if myJoystick.isConnected() == False:
+	if myJoystick.connected == False:
 		print("The Qwiic Joystick device isn't connected to the system. Please check your connection", \
 			file=sys.stderr)
 		return
 
 	myJoystick.begin()
 
-	print("Initialized. Firmware Version: %s" % myJoystick.getVersion())
+	print("Initialized. Firmware Version: %s" % myJoystick.version)
 
 	while True:
 
 		print("X: %d, Y: %d, Button: %d" % ( \
-					myJoystick.getHorizontal(), \
-					myJoystick.getVertical(), \
-					myJoystick.getButton()))
+					myJoystick.horizontal, \
+					myJoystick.vertical, \
+					myJoystick.button))
 
 		time.sleep(.5)
 

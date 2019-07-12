@@ -116,11 +116,11 @@ class QwiicJoystick(object):
 			self._i2c = i2c_driver
 
 	# ----------------------------------
-	# isConnected()
+	# is_connected()
 	#
 	# Is an actual board connected to our system?
 
-	def isConnected(self):
+	def is_connected(self):
 		""" 
 			Determine if a Joystick device is conntected to the system..
 
@@ -129,6 +129,8 @@ class QwiicJoystick(object):
 
 		"""
 		return qwiic_i2c.isDeviceConnected(self.address)
+
+	connected = property(is_connected)
 
 	# ----------------------------------
 	# begin()
@@ -145,14 +147,14 @@ class QwiicJoystick(object):
 		
 		# Basically return True if we are connected...
 	
-		return self.isConnected()
+		return self.is_connected()
 
 	#----------------------------------------------------------------
-	# getHorizontal()
+	# get_horizontal()
 	#
 	# Returns the 10-bit ADC value of the joystick horizontal position
 
-	def getHorizontal(self):
+	def get_horizontal(self):
 		""" 
 			Returns the 10-bit ADC value of the joystick horizontal position
 
@@ -165,12 +167,13 @@ class QwiicJoystick(object):
 
 		return (( msb << 8) | lsb)>>6
 
+	horizontal = property(get_horizontal)
 	#----------------------------------------------------------------
-	# getVertical()
+	# get_vertical()
 	#
 	# Returns the 10-bit ADC value of the joystick vertical position
 
-	def getVertical(self):
+	def get_vertical(self):
 		""" 
 			Returns the 10-bit ADC value of the joystick vertical position
 
@@ -183,11 +186,12 @@ class QwiicJoystick(object):
 
 		return (( msb << 8) | lsb)>>6
 
+	vertical = property(get_vertical)
 	#----------------------------------------------------------------
-	# getButton()
+	# get_button()
 	#
 	# Returns 0 button is currently being pressed.
-	def getButton(self):
+	def get_button(self):
 		""" 
 			Returns 0 button is currently being pressed.
 
@@ -198,13 +202,14 @@ class QwiicJoystick(object):
 
 		return self._i2c.readByte(self.address, JOYSTICK_BUTTON)
 
+	button = property(get_button)
 	#----------------------------------------------------------------
-	# checkButton()
+	# check_button()
 	#
 	# Returns 1 if button was pressed between reads of .getButton() or .checkButton()
 	# the register is then cleared after read.
 
-	def checkButton(self):
+	def check_button(self):
 		""" 
 			Returns 1 if button was pressed between reads of .getButton() or .checkButton()
 			the register is then cleared after read.
@@ -223,11 +228,11 @@ class QwiicJoystick(object):
 
 
 	#----------------------------------------------------------------
-	# getVersion()
+	# get_version()
 	# 
 	# Returns a string of the firmware version number
 
-	def getVersion(self):
+	def get_version(self):
 		"""
 		Returns a string of the firmware version number
 
@@ -238,3 +243,5 @@ class QwiicJoystick(object):
 		vMinor = self._i2c.readByte(self.address, JOYSTICK_VERSION2)
 
 		return "v %d.%d" % ( vMajor, vMinor)
+
+	version = property(get_version)
