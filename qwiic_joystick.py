@@ -92,7 +92,7 @@ class QwiicJoystick(object):
 						If not provided, the default address is used.
 		:param i2c_driver: An existing i2c driver object. If not provided 
 						a driver object is created. 
-		:return: The QwiicKey Joystick device object.
+		:return: The QwiicJoystick device object.
 		:rtype: Object
 	"""
 	# Constructor
