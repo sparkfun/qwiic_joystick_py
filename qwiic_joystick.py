@@ -42,7 +42,7 @@
 #
 # pylint: disable=line-too-long, bad-whitespace, invalid-name
 #
-"""
+"""!
 qwiic_joystick
 ===============
 Python module for the[SparkFun Qwiic Joystick](https://www.sparkfun.com/products/15168)
@@ -52,7 +52,6 @@ This python package is a port of the existing [SparkFun Qwiic Joystick Arduino L
 This package can be used in conjunction with the overall [SparkFun qwiic Python Package](https://github.com/sparkfun/Qwiic_Py)
 
 New to qwiic? Take a look at the entire [SparkFun qwiic ecosystem](https://www.sparkfun.com/qwiic).
-
 """
 #-----------------------------------------------------------------------------
 
@@ -90,15 +89,15 @@ JOYSTICK_CHANGE_ADDREESS = 0x0A
 # from this module.
 
 class QwiicJoystick(object):
-    """
+    """!
     QwiicJoystick
 
-        :param address: The I2C address to use for the device.
+    @param address: The I2C address to use for the device.
                         If not provided, the default address is used.
-        :param i2c_driver: An existing i2c driver object. If not provided
+    @param i2c_driver: An existing i2c driver object. If not provided
                         a driver object is created.
-        :return: The QwiicJoystick device object.
-        :rtype: Object
+
+    @return The
     """
     # Constructor
     device_name         = _DEFAULT_NAME
@@ -129,12 +128,10 @@ class QwiicJoystick(object):
     # Is an actual board connected to our system?
 
     def is_connected(self):
-        """
-            Determine if a Joystick device is conntected to the system..
+        """!
+        Determine if a Joystick device is conntected to the system..
 
-            :return: True if the device is connected, otherwise False.
-            :rtype: bool
-
+        @return **bool** True if the device is connected, otherwise False.
         """
         return self._i2c.isDeviceConnected(self.address)
 
@@ -145,12 +142,10 @@ class QwiicJoystick(object):
     #
     # Initialize the system/validate the board.
     def begin(self):
-        """
-            Initialize the operation of the Joystick module
+        """!
+        Initialize the operation of the Joystick module
 
-            :return: Returns true of the initializtion was successful, otherwise False.
-            :rtype: bool
-
+        @return **bool** Returns true of the initializtion was successful, otherwise False.
         """
 
         # Basically return True if we are connected...
@@ -163,12 +158,10 @@ class QwiicJoystick(object):
     # Returns the 10-bit ADC value of the joystick horizontal position
 
     def get_horizontal(self):
-        """
-            Returns the 10-bit ADC value of the joystick horizontal position
+        """!
+        Returns the 10-bit ADC value of the joystick horizontal position
 
-            :return: The next button value
-            :rtype: byte as integer
-
+        @return **byte as integer** The next button value
         """
         msb = self._i2c.readByte(self.address, JOYSTICK_X_MSB)
         lsb = self._i2c.readByte(self.address, JOYSTICK_X_LSB)
@@ -182,12 +175,10 @@ class QwiicJoystick(object):
     # Returns the 10-bit ADC value of the joystick vertical position
 
     def get_vertical(self):
-        """
-            Returns the 10-bit ADC value of the joystick vertical position
+        """!
+        Returns the 10-bit ADC value of the joystick vertical position
 
-            :return: The next button value
-            :rtype: byte as integer
-
+        @return **byte as integer** The next button value
         """
         msb = self._i2c.readByte(self.address, JOYSTICK_Y_MSB)
         lsb = self._i2c.readByte(self.address, JOYSTICK_Y_LSB)
@@ -200,12 +191,10 @@ class QwiicJoystick(object):
     #
     # Returns 0 button is currently being pressed.
     def get_button(self):
-        """
-            Returns 0 button is currently being pressed.
+        """!
+        Returns 0 button is currently being pressed.
 
-            :return: button status
-            :rtype: integer
-
+        @return **integer** button status
         """
 
         return self._i2c.readByte(self.address, JOYSTICK_BUTTON)
@@ -218,13 +207,11 @@ class QwiicJoystick(object):
     # the register is then cleared after read.
 
     def check_button(self):
-        """
-            Returns 1 if button was pressed between reads of .getButton() or .checkButton()
+        """!
+        Returns 1 if button was pressed between reads of .getButton() or .checkButton()
             the register is then cleared after read.
 
-            :return: button status
-            :rtype: integer
-
+        @return **integer** button status
         """
 
         status = self._i2c.readByte(self.address, JOYSTICK_STATUS)
@@ -241,11 +228,10 @@ class QwiicJoystick(object):
     # Returns a string of the firmware version number
 
     def get_version(self):
-        """
+        """!
         Returns a string of the firmware version number
 
-        :return: The firmware version
-        :rtype: string
+        @return **string** The firmware version
         """
         vMajor = self._i2c.readByte(self.address, JOYSTICK_VERSION1)
         vMinor = self._i2c.readByte(self.address, JOYSTICK_VERSION2)
